@@ -2,87 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Custom Fonts */
+@font-face {
+  font-family: 'Ramillas';
+  src: url('/fonts/TT_Ramillas_Trial_Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rawgly';
+  src: url('/fonts/RawglyRegular-MVyWP.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Romantic Sage & Cream Wedding Palette */
+    --background: 45 30% 96%;
+    --foreground: 30 15% 25%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 45 25% 94%;
+    --card-foreground: 30 15% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 45 25% 94%;
+    --popover-foreground: 30 15% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Sage green from the logo */
+    --primary: 72 22% 54%;
+    --primary-foreground: 45 30% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 45 20% 88%;
+    --secondary-foreground: 30 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 45 15% 90%;
+    --muted-foreground: 30 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 72 18% 65%;
+    --accent-foreground: 30 15% 25%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 45 30% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 72 15% 75%;
+    --input: 45 20% 88%;
+    --ring: 72 22% 54%;
 
     --radius: 0.5rem;
 
+    /* Wedding specific tokens */
+    --envelope: 35 35% 75%;
+    --envelope-inner: 45 40% 92%;
+    --seal: 72 22% 54%;
+    --seal-shadow: 72 25% 35%;
+    --paper: 45 30% 96%;
+    --paper-shadow: 35 20% 80%;
+    --text-romantic: 30 15% 30%;
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 30 15% 12%;
+    --foreground: 45 30% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 30 15% 15%;
+    --card-foreground: 45 30% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 30 15% 15%;
+    --popover-foreground: 45 30% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 72 22% 54%;
+    --primary-foreground: 30 15% 12%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 30 12% 22%;
+    --secondary-foreground: 45 30% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 30 12% 22%;
+    --muted-foreground: 45 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 72 18% 45%;
+    --accent-foreground: 45 30% 96%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 45 30% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 30 12% 25%;
+    --input: 30 12% 22%;
+    --ring: 72 22% 54%;
+    
+    --envelope: 35 25% 35%;
+    --envelope-inner: 35 30% 25%;
+    --seal: 72 22% 45%;
+    --seal-shadow: 72 25% 25%;
+    --paper: 30 15% 15%;
+    --paper-shadow: 30 15% 10%;
+    --text-romantic: 45 25% 85%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +125,152 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Ramillas', Georgia, serif;
   }
+
+  h1, h2, h3 {
+    font-family: 'Rawgly', 'Ramillas', Georgia, serif;
+  }
+}
+
+@layer components {
+  .font-romantic {
+    font-family: 'Ramillas', Georgia, serif;
+  }
+
+  .font-display {
+    font-family: 'Rawgly', 'Ramillas', Georgia, serif;
+  }
+
+  .text-printed {
+    color: hsl(var(--text-romantic));
+    text-shadow: 0 0 1px hsl(var(--text-romantic) / 0.3);
+    letter-spacing: 0.02em;
+  }
+
+  .paper-texture {
+    background-color: hsl(var(--paper));
+    position: relative;
+  }
+
+  .paper-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/paper-texture.jpg');
+    background-size: cover;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Envelope animations */
+  @keyframes envelope-open {
+    0% {
+      transform: rotateX(0deg);
+    }
+    100% {
+      transform: rotateX(-180deg);
+    }
+  }
+
+  @keyframes letter-rise {
+    0% {
+      transform: translateY(0) scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(-100%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes seal-break {
+    0% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2) rotate(15deg);
+    }
+    100% {
+      transform: scale(0) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes logo-rotate {
+    0% {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(1000px) rotateY(360deg);
+    }
+  }
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-envelope-open {
+    animation: envelope-open 1s ease-out forwards;
+    transform-origin: top center;
+  }
+
+  .animate-letter-rise {
+    animation: letter-rise 1s ease-out 0.5s forwards;
+  }
+
+  .animate-seal-break {
+    animation: seal-break 0.6s ease-out forwards;
+  }
+
+  .animate-logo-rotate {
+    animation: logo-rotate 8s linear infinite;
+    transform-style: preserve-3d;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
 }
