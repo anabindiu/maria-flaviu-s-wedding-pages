@@ -3,6 +3,7 @@ import Logo3D from './Logo3D';
 import Countdown from './Countdown';
 import VenueSection from './VenueSection';
 import RSVPForm from './RSVPForm';
+import DressCodeSection from './DressCodeSection';
 import paperTexture from '@/assets/paper-texture.jpg';
 
 const WeddingContent = () => {
@@ -68,6 +69,28 @@ const WeddingContent = () => {
           <div className="w-24 h-px bg-border" />
         </div>
 
+        {/* Reception Section */}
+        <section className="py-12 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-display text-primary mb-6 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+              {t.reception.title}
+            </h2>
+            <p className="text-lg font-romantic text-romantic leading-relaxed animate-fade-up opacity-0 delay-100" style={{ animationFillMode: 'forwards' }}>
+              {t.reception.description}
+            </p>
+            <p className="mt-4 text-lg font-romantic text-romantic animate-fade-up opacity-0 delay-200" style={{ animationFillMode: 'forwards' }}>
+              {t.reception.ceremony} <span className="font-semibold text-primary">3:00 PM</span>, {t.reception.dinner} <span className="font-semibold text-primary">4:30 PM</span>.
+            </p>
+          </div>
+        </section>
+
+        {/* Decorative divider */}
+        <div className="flex items-center justify-center py-8">
+          <div className="w-24 h-px bg-border" />
+          <div className="mx-4 w-2 h-2 rounded-full bg-primary" />
+          <div className="w-24 h-px bg-border" />
+        </div>
+
         {/* Venue Section */}
         <VenueSection />
 
@@ -78,7 +101,62 @@ const WeddingContent = () => {
           <div className="w-24 h-px bg-border" />
         </div>
 
-        {/* RSVP Section */}
+        {/* Accommodation Section */}
+        <section className="py-12 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-display text-primary mb-6 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+              {t.accommodation.title}
+            </h2>
+            <p className="text-lg font-romantic text-romantic leading-relaxed animate-fade-up opacity-0 delay-100" style={{ animationFillMode: 'forwards' }}>
+              {t.accommodation.description}
+            </p>
+            <p className="mt-2 font-romantic text-primary font-semibold text-lg animate-fade-up opacity-0 delay-200" style={{ animationFillMode: 'forwards' }}>
+              Due Fratelli Village Resort
+            </p>
+          </div>
+        </section>
+
+        {/* Decorative divider */}
+        <div className="flex items-center justify-center py-8">
+          <div className="w-24 h-px bg-border" />
+          <div className="mx-4 w-2 h-2 rounded-full bg-primary" />
+          <div className="w-24 h-px bg-border" />
+        </div>
+
+        {/* Dress Code Section */}
+        <DressCodeSection />
+
+        {/* Decorative divider */}
+        <div className="flex items-center justify-center py-8">
+          <div className="w-24 h-px bg-border" />
+          <div className="mx-4 w-2 h-2 rounded-full bg-primary" />
+          <div className="w-24 h-px bg-border" />
+        </div>
+
+        {/* RSVP Info Section */}
+        <section className="py-12 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-display text-primary mb-6 animate-fade-up opacity-0" style={{ animationFillMode: 'forwards' }}>
+              RSVP
+            </h2>
+            <p className="text-lg font-romantic text-romantic leading-relaxed animate-fade-up opacity-0 delay-100" style={{ animationFillMode: 'forwards' }}>
+              {t.rsvpInfo.description}
+            </p>
+            <div className="mt-6 space-y-2 font-romantic text-muted-foreground animate-fade-up opacity-0 delay-200" style={{ animationFillMode: 'forwards' }}>
+              <p>Flaviu: <a href="tel:+40725266568" className="text-primary hover:underline">+40 725 266 568</a></p>
+              <p>Maria: <a href="tel:+14034047776" className="text-primary hover:underline">+1 403 404 7776</a></p>
+            </div>
+          </div>
+        </section>
+
+        {/* Decorative divider */}
+        <div className="flex items-center justify-center py-8">
+          <div className="w-24 h-px bg-border" />
+          <div className="mx-4 w-2 h-2 rounded-full bg-primary" />
+          <div className="w-24 h-px bg-border" />
+        </div>
+
+        {/* RSVP Form Section */}
         <RSVPForm />
 
         {/* Footer */}

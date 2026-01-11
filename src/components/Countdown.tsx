@@ -39,19 +39,17 @@ const Countdown = () => {
 
   return (
     <div className="py-16 px-4">
-      <div className="flex justify-center gap-4 sm:gap-8 flex-wrap">
+      <div className="flex justify-center gap-6 sm:gap-12 flex-wrap">
         {timeUnits.map((unit, index) => (
           <div
             key={unit.label}
             className="flex flex-col items-center animate-fade-up opacity-0"
             style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'forwards' }}
           >
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg bg-paper/50 backdrop-blur-sm border border-border flex items-center justify-center shadow-lg">
-              <span className="text-3xl sm:text-4xl font-display text-primary">
-                {String(unit.value).padStart(2, '0')}
-              </span>
-            </div>
-            <span className="mt-2 text-sm font-romantic text-muted-foreground uppercase tracking-wider">
+            <span className="text-4xl sm:text-5xl md:text-6xl font-display text-primary">
+              {String(unit.value).padStart(2, '0')}
+            </span>
+            <span className="mt-1 text-xs sm:text-sm font-romantic text-muted-foreground uppercase tracking-wider">
               {unit.label}
             </span>
           </div>
