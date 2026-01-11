@@ -34,24 +34,22 @@ const VenueSection = () => {
           <p className="text-muted-foreground font-romantic">
             {t.venueAddress}
           </p>
-          <p className="text-primary font-romantic text-lg mt-2">
-            3:00 PM
-          </p>
         </div>
         
-        {/* Google Maps embed */}
-        <div className="mb-6 rounded-lg overflow-hidden shadow-xl animate-fade-up opacity-0 delay-400" style={{ animationFillMode: 'forwards' }}>
-          <iframe
-            src={embedUrl}
-            width="100%"
-            height="350"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Venue Location"
-            className="w-full"
-          />
+        {/* Google Maps embed - SQUARE */}
+        <div className="mb-6 max-w-md mx-auto animate-fade-up opacity-0 delay-400" style={{ animationFillMode: 'forwards' }}>
+          <div className="aspect-square rounded-lg overflow-hidden shadow-xl">
+            <iframe
+              src={embedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Venue Location"
+            />
+          </div>
         </div>
         
         {/* View on Maps button */}
