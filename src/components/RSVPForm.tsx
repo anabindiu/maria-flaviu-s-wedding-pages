@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const RSVPForm = () => {
@@ -13,7 +13,7 @@ const RSVPForm = () => {
         email: '',
         attending: '',
         guests: '1',
-        guestNames: [] as string[], 
+        guestNames: [] as string[],
         guestAllergies: [] as string[],
         dietary: [] as string[],
         otherAllergies: '',
@@ -29,18 +29,52 @@ const RSVPForm = () => {
         }));
     };
 
-    const setGuestsCount = (value: string) => {
-        const raw = Number(value);
-        const safe = Number.isFinite(raw) ? raw : 1;
+    // ✅ For instant UI: clamp guests for rendering (but keep typing natural)
+    const previewGuests = useMemo(() => {
+        const n = parseInt(formData.guests || '1', 10);
+        if (!Number.isFinite(n)) return 1;
+        return Math.max(1, Math.min(MAX_GUESTS, n));
+    }, [formData.guests]);
 
-        const count = Math.max(1, Math.min(MAX_GUESTS, Math.floor(safe)));
-        const extra = Math.max(0, count - 1);
+    // ✅ Resize guest arrays immediately (so squares show instantly while typing)
+    const setGuestsCount = (value: string) => {
+        // allow empty while typing
+        if (value === '') {
+            setFormData(prev => ({
+                ...prev,
+                guests: '',
+                guestNames: [],
+                guestAllergies: [],
+            }));
+            return;
+        }
+
+        // only allow digits
+        if (!/^\d+$/.test(value)) return;
+
+        const typed = parseInt(value, 10);
+        const clamped = Math.max(1, Math.min(MAX_GUESTS, typed));
+        const extra = Math.max(0, clamped - 1);
 
         setFormData(prev => {
             const nextGuestNames = Array.from({ length: extra }, (_, i) => prev.guestNames[i] ?? '');
             const nextGuestAllergies = Array.from({ length: extra }, (_, i) => prev.guestAllergies[i] ?? '');
-            return { ...prev, guests: String(count), guestNames: nextGuestNames, guestAllergies: nextGuestAllergies };
+
+            return {
+                ...prev,
+                guests: value, // keep what they typed (feels normal)
+                guestNames: nextGuestNames,
+                guestAllergies: nextGuestAllergies,
+            };
         });
+    };
+
+    // ✅ On blur normalize the input display (ex: "0002" -> "2", "" -> "1")
+    const clampGuestsCount = () => {
+        setFormData(prev => ({
+            ...prev,
+            guests: String(previewGuests),
+        }));
     };
 
     const setGuestName = (index: number, value: string) => {
@@ -59,7 +93,6 @@ const RSVPForm = () => {
         });
     };
 
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (isSubmitting) return;
@@ -75,7 +108,7 @@ const RSVPForm = () => {
 
             const payload = {
                 ...formData,
-                guests: Number(formData.guests),
+                guests: previewGuests, // ✅ always valid even if input is empty mid-typing
                 guestNames: formData.guestNames.map(n => n.trim()).filter(Boolean),
                 submittedAt: new Date().toISOString(),
             };
@@ -206,13 +239,14 @@ const RSVPForm = () => {
                                         type="number"
                                         min="1"
                                         value={formData.guests}
-                                        onChange={e => setGuestsCount(e.target.value)} // ✅ hidden cap to 50
+                                        onChange={e => setGuestsCount(e.target.value)}
+                                        onBlur={clampGuestsCount}
                                         className="w-28 px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-romantic"
                                     />
                                 </div>
 
-                                {/* ✅ Guest name squares */}
-                                {Number(formData.guests) > 1 && (
+                                {/* ✅ Guest name squares (instant) */}
+                                {previewGuests > 1 && (
                                     <div className="mt-2">
                                         <div className="max-h-[420px] overflow-auto pr-2">
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -232,6 +266,23 @@ const RSVPForm = () => {
                                                             placeholder={(t.rsvp.guestNamePlaceholder ?? 'Full name')}
                                                             className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-romantic"
                                                         />
+
+                                                        {/* Optional: remove if you don’t want guest allergies */}
+                                                        {t.rsvp.guestAllergies && (
+                                                            <>
+                                                                <label className="block text-sm font-romantic text-muted-foreground mt-3 mb-2">
+                                                                    {t.rsvp.guestAllergies}
+                                                                </label>
+
+                                                                <input
+                                                                    type="text"
+                                                                    value={formData.guestAllergies?.[idx] ?? ''}
+                                                                    onChange={(e) => setGuestAllergy(idx, e.target.value)}
+                                                                    placeholder={t.rsvp.guestAllergiesPlaceholder ?? ''}
+                                                                    className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-romantic"
+                                                                />
+                                                            </>
+                                                        )}
                                                     </div>
                                                 ))}
                                             </div>
@@ -249,10 +300,6 @@ const RSVPForm = () => {
                                             {t.rsvp.dietary}
                                         </label>
                                     </div>
-
-                                    <p className="text-sm text-muted-foreground font-romantic mb-4">
-                                        {t.rsvp.dietaryDescription}
-                                    </p>
 
                                     <div className="grid grid-cols-2 gap-3">
                                         {dietaryOptions.map(option => (

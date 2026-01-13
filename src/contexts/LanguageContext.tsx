@@ -45,7 +45,6 @@ interface Translations {
     no: string;
     guests: string;
     dietary: string;
-    dietaryDescription: string;
     glutenFree: string;
     vegan: string;
     vegetarian: string;
@@ -102,7 +101,6 @@ const translations: Record<Language, Translations> = {
       no: "I won't be able to attend",
       guests: 'Number of guests (including yourself)',
       dietary: 'Allergies and food intolerances',
-      dietaryDescription: 'It is very important for us to know about any dietary restrictions. Select all that apply:',
       glutenFree: 'Gluten-free / Celiac',
       vegan: 'Vegan',
       vegetarian: 'Vegetarian',
@@ -158,7 +156,6 @@ const translations: Record<Language, Translations> = {
       no: 'Nu voi putea participa',
       guests: 'Numărul de invitați (incluzându-te pe tine)',
       dietary: 'Alergii și intoleranțe alimentare',
-      dietaryDescription: 'Este foarte important pentru noi să cunoaștem orice restricție alimentară. Selectează tot ce se aplică:',
       glutenFree: 'Fără gluten / Celiac',
       vegan: 'Vegan',
       vegetarian: 'Vegetarian',
