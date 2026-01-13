@@ -1,6 +1,6 @@
 ﻿import { useMemo, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import envelopeImg from '@/assets/envelope.png';
+import envelopeImg from '@/assets/envelope4.png';
 import animatedMp4 from '@/assets/animated.mp4';
 
 interface EnvelopeProps {
