@@ -15,7 +15,6 @@ const Envelope = ({ onOpen }: EnvelopeProps) => {
     const [videoReady, setVideoReady] = useState(false);
 
     const videoRef = useRef<HTMLVideoElement | null>(null);
-
     const bgTransform = useMemo(() => 'translateY(-5%) scale(1.15)', []);
 
     const handleOpen = () => {
@@ -57,41 +56,42 @@ const Envelope = ({ onOpen }: EnvelopeProps) => {
                     preload="auto"
                     onPlaying={() => setVideoReady(true)}
                     onCanPlay={() => setVideoReady(true)}
-                    onEnded={() => {
-                        onOpen();
-                    }}
+                    onEnded={() => onOpen()}
                 />
             )}
 
-            {/* ✅ Overlay text (shows on image AND video) */}
-            <div className="absolute inset-0 z-30 pointer-events-none">
-                <div className="absolute left-1/2 top-[60%] -translate-x-1/2 px-4 text-center">
-                    <p className="font-coalhand text-2xl tracking-widest leading-tight text-white/45 whitespace-pre-line">
-                        {t.liftSeal}
-                    </p>
+            {/* ✅ ONE liftSeal text only (and it's clickable before opening) */}
+            {!isOpening ? (
+                <button
+                    onClick={handleOpen}
+                    className="absolute inset-0 z-40"
+                    aria-label="Open invitation"
+                    style={{ background: 'transparent' }}
+                >
+                    <div className="absolute left-1/2 top-[60%] -translate-x-1/2 px-4 text-center">
+                        <p className="font-coalhand text-base sm:text-lg tracking-widest leading-tight text-white/45 whitespace-pre-line">
+                            {t.liftSeal}
+                        </p>
+                    </div>
+                </button>
+            ) : (
+                <div className="absolute inset-0 z-30 pointer-events-none">
+                    <div className="absolute left-1/2 top-[60%] -translate-x-1/2 px-4 text-center">
+                        <p className="font-coalhand text-base sm:text-lg tracking-widest leading-tight text-white/45 whitespace-pre-line">
+                            {t.liftSeal}
+                        </p>
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Invisible clickable seal (only before opening) */}
             {!isOpening && (
                 <button
                     onClick={handleOpen}
                     aria-label="Open invitation"
-                    className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36 rounded-full z-40 cursor-pointer"
+                    className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-36 sm:h-36 rounded-full z-50 cursor-pointer"
                     style={{ background: 'transparent' }}
                 />
-            )}
-
-            {/* Hint (clickable) */}
-            {!isOpening && (
-                <button
-                    onClick={handleOpen}
-                    className="absolute left-1/2 top-[60%] -translate-x-1/2 z-40 px-4 text-center"
-                >
-                    <p className="font-coalhand text-2xl tracking-widest leading-tight text-white/45 whitespace-pre-line pointer-events-none">
-                        {t.liftSeal}
-                    </p>
-                </button>
             )}
         </div>
     );
