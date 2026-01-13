@@ -32,7 +32,7 @@ const WeddingContent = () => {
 
 
                     <div className="text-center animate-fade-up opacity-0 delay-200" style={{ animationFillMode: 'forwards' }}>
-                        <h1 className="text-5xl sm:text-7xl md:text-8xl font-display text-primary mb-4">
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display text-primary mb-4">
                             FLAVIU{' '}
                             <span className="text-3xl sm:text-5xl md:text-6xl align-middle opacity-80">&</span>{' '}
                             MARIA
@@ -42,14 +42,8 @@ const WeddingContent = () => {
                         </p>
                     </div>
 
-                    <div className="mt-0 sm:mt-2 animate-fade-up opacity-0 delay-300" style={{ animationFillMode: 'forwards' }}>
-                        <div className="flex items-center justify-center gap-4 text-4xl sm:text-6xl font-display text-primary">
-                            <span>09</span>
-                            <span className="text-muted-foreground">·</span>
-                            <span>05</span>
-                            <span className="text-muted-foreground">·</span>
-                            <span>2026</span>
-                        </div>
+                    <div className="flex items-center justify-center text-4xl sm:text-6xl font-display text-primary">
+                        <span>{t.weddingDate}</span>
                     </div>
 
                     {/* Scroll indicator */}

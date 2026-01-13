@@ -5,6 +5,7 @@ type Language = 'ro' | 'en';
 interface Translations {
   liftSeal: string;
   saveTheDate: string;
+  weddingDate: string;
   theVenue: string;
   venueAddress: string;
   viewOnMaps: string;
@@ -62,6 +63,7 @@ const translations: Record<Language, Translations> = {
   en: {
     liftSeal: 'Lift the seal \nto begin',
     saveTheDate: 'SAVE THE DATE',
+    weddingDate: '09 May 2026',
     theVenue: 'THE VENUE',
     venueAddress: 'SURA SLAVIA, SINTEU, 417550, BIHOR, ROMANIA',
     viewOnMaps: 'VIEW ON GOOGLE MAPS',
@@ -117,6 +119,7 @@ const translations: Record<Language, Translations> = {
   ro: {
     liftSeal: 'Ridică sigiliul\n pentru a începe',
     saveTheDate: 'SAVE THE DATE',
+    weddingDate: '09 Mai 2026',
     theVenue: 'LOCAȚIA',
     venueAddress: 'SURA SLAVIA, SINTEU, 417550, BIHOR, ROMÂNIA',
     viewOnMaps: 'VEZI PE GOOGLE MAPS',

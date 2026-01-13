@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const RSVPForm = () => {
@@ -6,11 +6,15 @@ const RSVPForm = () => {
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const MAX_GUESTS = 50;
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         attending: '',
         guests: '1',
+        guestNames: [] as string[], 
+        guestAllergies: [] as string[],
         dietary: [] as string[],
         otherAllergies: '',
         message: '',
@@ -24,6 +28,37 @@ const RSVPForm = () => {
                 : [...prev.dietary, option],
         }));
     };
+
+    const setGuestsCount = (value: string) => {
+        const raw = Number(value);
+        const safe = Number.isFinite(raw) ? raw : 1;
+
+        const count = Math.max(1, Math.min(MAX_GUESTS, Math.floor(safe)));
+        const extra = Math.max(0, count - 1);
+
+        setFormData(prev => {
+            const nextGuestNames = Array.from({ length: extra }, (_, i) => prev.guestNames[i] ?? '');
+            const nextGuestAllergies = Array.from({ length: extra }, (_, i) => prev.guestAllergies[i] ?? '');
+            return { ...prev, guests: String(count), guestNames: nextGuestNames, guestAllergies: nextGuestAllergies };
+        });
+    };
+
+    const setGuestName = (index: number, value: string) => {
+        setFormData(prev => {
+            const next = [...prev.guestNames];
+            next[index] = value;
+            return { ...prev, guestNames: next };
+        });
+    };
+
+    const setGuestAllergy = (index: number, value: string) => {
+        setFormData(prev => {
+            const next = [...prev.guestAllergies];
+            next[index] = value;
+            return { ...prev, guestAllergies: next };
+        });
+    };
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,6 +76,7 @@ const RSVPForm = () => {
             const payload = {
                 ...formData,
                 guests: Number(formData.guests),
+                guestNames: formData.guestNames.map(n => n.trim()).filter(Boolean),
                 submittedAt: new Date().toISOString(),
             };
 
@@ -58,7 +94,6 @@ const RSVPForm = () => {
             setIsSubmitting(false);
         }
     };
-
 
     if (submitted) {
         return (
@@ -170,12 +205,39 @@ const RSVPForm = () => {
                                     <input
                                         type="number"
                                         min="1"
-                                        max="10"
                                         value={formData.guests}
-                                        onChange={e => setFormData(prev => ({ ...prev, guests: e.target.value }))}
-                                        className="w-24 px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-romantic"
+                                        onChange={e => setGuestsCount(e.target.value)} // ✅ hidden cap to 50
+                                        className="w-28 px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-romantic"
                                     />
                                 </div>
+
+                                {/* ✅ Guest name squares */}
+                                {Number(formData.guests) > 1 && (
+                                    <div className="mt-2">
+                                        <div className="max-h-[420px] overflow-auto pr-2">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                {formData.guestNames.map((guestName, idx) => (
+                                                    <div
+                                                        key={idx}
+                                                        className="rounded-xl border border-border bg-background/60 p-4 shadow-sm"
+                                                    >
+                                                        <label className="block text-sm font-romantic text-romantic mb-2">
+                                                            {(t.rsvp.guestName ?? 'Guest')} {idx + 1}
+                                                        </label>
+
+                                                        <input
+                                                            type="text"
+                                                            value={guestName}
+                                                            onChange={(e) => setGuestName(idx, e.target.value)}
+                                                            placeholder={(t.rsvp.guestNamePlaceholder ?? 'Full name')}
+                                                            className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-romantic"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
 
                                 {/* Dietary Requirements */}
                                 <div>

@@ -13,7 +13,7 @@ const VenueSection = () => {
             <div className="max-w-4xl mx-auto">
                 {/* Title */}
                 <h2
-                    className="font-romantic font-medium text-xl font-display text-center text-primary mb-2 animate-fade-up opacity-0"
+                    className="font-romantic font-medium text-xl font-display text-center text-romantic mb-2 animate-fade-up opacity-0"
                     style={{ animationFillMode: 'forwards' }}
                 >
                     {t.theVenue}
@@ -25,7 +25,7 @@ const VenueSection = () => {
                     className="mx-auto w-full max-w-[430px] text-center mb-8 animate-fade-up opacity-0 delay-100"
                     style={{ animationFillMode: 'forwards' }}
                 >
-                    <h3 className="text-4xl sm:text-4xl font-display text-romantic mb-2">
+                    <h3 className="text-4xl sm:text-4xl font-display text-primary mb-2">
                         SURA SLAVIA
                     </h3>
 
