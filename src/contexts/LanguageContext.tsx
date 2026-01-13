@@ -74,7 +74,7 @@ const translations: Record<Language, Translations> = {
     },
     reception: {
       title: 'RECEPTION',
-      description: 'PLEASE JOIN US FOR AN EVENING OF CELEBRATION.',
+      description: 'PLEASE JOIN US FOR A DAY OF CELEBRATION.',
       ceremony: 'THE CEREMONY WILL BEGIN AT',
       dinner: 'FOLLOWED BY DINNER AT',
     },
@@ -129,8 +129,8 @@ const translations: Record<Language, Translations> = {
     },
     reception: {
       title: 'RECEPȚIE',
-      description: 'VĂ INVITĂM SĂ NE FIȚI ALĂTURI LA O SEARĂ DE SĂRBĂTOARE.',
-      ceremony: 'CEREMONIA VA ÎNCEPE LA ORA',
+      description: 'VĂ INVITĂM SĂ NE FIȚI ALĂTURI LA O ZI DE SĂRBĂTOARE.',
+      ceremony: 'CEREMONIA RELIGIOASĂ VA ÎNCEPE LA ORA',
       dinner: 'URMATĂ DE CINĂ LA ORA',
     },
     accommodation: {
