@@ -60,7 +60,7 @@ interface Translations {
 
 const translations: Record<Language, Translations> = {
   en: {
-    liftSeal: 'Lift the seal \nto begin',
+    liftSeal: 'Press the seal \nto begin',
     saveTheDate: 'SAVE THE DATE',
     weddingDate: '09 May 2026',
     theVenue: 'THE VENUE',
@@ -115,7 +115,7 @@ const translations: Record<Language, Translations> = {
 
   },
   ro: {
-    liftSeal: 'Ridică sigiliul\n pentru a începe',
+    liftSeal: 'Apasă sigiliul\n pentru a începe',
     saveTheDate: 'SAVE THE DATE',
     weddingDate: '09 Mai 2026',
     theVenue: 'LOCAȚIA',
