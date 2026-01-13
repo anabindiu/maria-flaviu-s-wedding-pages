@@ -3,7 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const Countdown = () => {
   const { t } = useLanguage();
-  const weddingDate = new Date('2026-09-05T15:00:00');
+  const weddingDate = new Date('2026-05-09T15:00:00');
   
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

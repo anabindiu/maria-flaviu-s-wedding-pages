@@ -138,6 +138,10 @@
     font-family: 'Ramillas', Georgia, serif;
   }
 
+  .font-coalhand {
+        font-family: 'CoalhandLuke', 'Rawgly', 'Ramillas', Georgia, serif;
+  }
+
   .font-display {
     font-family: 'Rawgly', 'Ramillas', Georgia, serif;
   }
@@ -257,7 +261,7 @@
   }
 
   .animate-fade-up {
-    animation: fade-up 0.8s ease-out forwards;
+    animation: fade-up 2s ease-out forwards; /* adjust: 1.2s–2.5s */
   }
 
   .animate-float {
@@ -274,3 +278,25 @@
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
 }
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'CoalhandLuke';
+    src: url('/fonts/CoalhandLuke-TRIAL.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ramillas';
+    src: url('/fonts/TT_Ramillas_Trial_Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+

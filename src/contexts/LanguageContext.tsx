@@ -4,9 +4,7 @@ type Language = 'ro' | 'en';
 
 interface Translations {
   liftSeal: string;
-  exclusiveInvitation: string;
   saveTheDate: string;
-  allForLove: string;
   theVenue: string;
   venueAddress: string;
   viewOnMaps: string;
@@ -34,6 +32,7 @@ interface Translations {
     description: string;
   };
   rsvp: {
+    [x: string]: string;
     title: string;
     subtitle: string;
     name: string;
@@ -47,28 +46,25 @@ interface Translations {
     dietary: string;
     dietaryDescription: string;
     glutenFree: string;
-    lactoseFree: string;
     vegan: string;
     vegetarian: string;
     nutAllergy: string;
-    seafoodAllergy: string;
     otherAllergies: string;
     otherAllergiesPlaceholder: string;
     message: string;
     submit: string;
     thankYou: string;
-  };
+    };
+    contactUs: string;
 }
 
 const translations: Record<Language, Translations> = {
   en: {
-    liftSeal: 'lift the seal to begin',
-    exclusiveInvitation: 'This invitation is\nexclusive for you',
-    saveTheDate: 'Save the Date',
-    allForLove: 'All for Love',
-    theVenue: 'The Venue',
-    venueAddress: 'Sura Slavia, Sinteu, 417550, Bihor, Romania',
-    viewOnMaps: 'View on Google Maps',
+    liftSeal: 'Lift the seal \nto begin',
+    saveTheDate: 'SAVE THE DATE',
+    theVenue: 'THE VENUE',
+    venueAddress: 'SURA SLAVIA, SINTEU, 417550, BIHOR, ROMANIA',
+    viewOnMaps: 'VIEW ON GOOGLE MAPS',
     countdown: {
       days: 'Days',
       hours: 'Hours',
@@ -76,24 +72,24 @@ const translations: Record<Language, Translations> = {
       seconds: 'Seconds',
     },
     reception: {
-      title: 'Reception',
-      description: 'Please join us for an evening of celebration.',
-      ceremony: 'The ceremony will begin at',
-      dinner: 'followed by dinner at',
+      title: 'RECEPTION',
+      description: 'PLEASE JOIN US FOR AN EVENING OF CELEBRATION.',
+      ceremony: 'THE CEREMONY WILL BEGIN AT',
+      dinner: 'FOLLOWED BY DINNER AT',
     },
     accommodation: {
-      title: 'Accommodation',
-      description: 'Accommodation options are available near the venue –',
+      title: 'ACCOMMODATION',
+      description: 'ACCOMMODATION OPTIONS ARE AVAILABLE NEAR THE VENUE –',
     },
     dressCode: {
-      title: 'Dress Code',
-      description: "We'd love for you to use our suggested colour palette, though it's completely optional.",
+      title: 'DRESS CODE',
+      description: "WE'D LOVE FOR YOU TO USE OUR SUGGESTED COLOUR PALETTE, THOUGH IT'S COMPLETELY OPTIONAL.",
     },
     rsvpInfo: {
-      description: 'Kindly confirm your presence by April 15, 2026.',
+      description: 'KINDLY CONFIRM YOUR PRESENCE BY APRIL 15, 2026.',
     },
     rsvp: {
-      title: 'Confirm Your Presence',
+      title: 'CONFIRM YOUR PRESENCE',
       subtitle: 'We would be honored to have you celebrate with us',
       name: 'Full Name',
       namePlaceholder: 'Your name',
@@ -106,26 +102,24 @@ const translations: Record<Language, Translations> = {
       dietary: 'Allergies and food intolerances',
       dietaryDescription: 'It is very important for us to know about any dietary restrictions. Select all that apply:',
       glutenFree: 'Gluten-free / Celiac',
-      lactoseFree: 'Lactose-free',
       vegan: 'Vegan',
       vegetarian: 'Vegetarian',
       nutAllergy: 'Nut allergy',
-      seafoodAllergy: 'Seafood allergy',
       otherAllergies: 'Other allergies or restrictions:',
       otherAllergiesPlaceholder: 'E.g., egg allergy, fructose intolerance',
       message: 'Message for the couple (optional)',
       submit: 'Send RSVP',
       thankYou: 'Thank you! Your response has been recorded.',
-    },
+        },
+      contactUs: 'If you have any questions, please contact us.',
+
   },
   ro: {
-    liftSeal: 'ridică sigiliul pentru a începe',
-    exclusiveInvitation: 'Această invitație este\nexclusiv pentru tine',
-    saveTheDate: 'Rezervă Data',
-    allForLove: 'Totul pentru Dragoste',
-    theVenue: 'Locația',
-    venueAddress: 'Sura Slavia, Sinteu, 417550, Bihor, România',
-    viewOnMaps: 'Vezi pe Google Maps',
+    liftSeal: 'Ridică sigiliul\n pentru a începe',
+    saveTheDate: 'SAVE THE DATE',
+    theVenue: 'LOCAȚIA',
+    venueAddress: 'SURA SLAVIA, SINTEU, 417550, BIHOR, ROMÂNIA',
+    viewOnMaps: 'VEZI PE GOOGLE MAPS',
     countdown: {
       days: 'Zile',
       hours: 'Ore',
@@ -133,24 +127,24 @@ const translations: Record<Language, Translations> = {
       seconds: 'Secunde',
     },
     reception: {
-      title: 'Recepție',
-      description: 'Vă invităm să ne fiți alături la o seară de sărbătoare.',
-      ceremony: 'Ceremonia va începe la ora',
-      dinner: 'urmată de cină la ora',
+      title: 'RECEPȚIE',
+      description: 'VĂ INVITĂM SĂ NE FIȚI ALĂTURI LA O SEARĂ DE SĂRBĂTOARE.',
+      ceremony: 'CEREMONIA VA ÎNCEPE LA ORA',
+      dinner: 'URMATĂ DE CINĂ LA ORA',
     },
     accommodation: {
-      title: 'Cazare',
-      description: 'Opțiuni de cazare sunt disponibile în apropierea locației –',
+      title: 'CAZARE',
+      description: 'OPȚIUNI DE CAZARE SUNT DISPONIBILE ÎN APROPIEREA LOCAȚIEI –',
     },
     dressCode: {
-      title: 'Cod Vestimentar',
-      description: 'Ne-ar plăcea să folosiți paleta de culori sugerată, deși este complet opțional.',
+      title: 'COD VESTIMENTAR',
+      description: 'NE-AR PLĂCEA SĂ FOLOSIȚI PALETA DE CULORI SUGERATĂ, DEȘI ESTE COMPLET OPȚIONAL.',
     },
     rsvpInfo: {
-      description: 'Vă rugăm să confirmați prezența până la 15 aprilie 2026.',
+      description: 'VĂ RUGĂM SĂ CONFIRMAȚI PREZENȚA PÂNĂ LA 15 APRILIE 2026.',
     },
     rsvp: {
-      title: 'Confirmă Prezența',
+      title: 'CONFIRMĂ PREZENȚA',
       subtitle: 'Ne-ar onora să sărbătorești alături de noi',
       name: 'Nume complet',
       namePlaceholder: 'Numele tău',
@@ -163,17 +157,17 @@ const translations: Record<Language, Translations> = {
       dietary: 'Alergii și intoleranțe alimentare',
       dietaryDescription: 'Este foarte important pentru noi să cunoaștem orice restricție alimentară. Selectează tot ce se aplică:',
       glutenFree: 'Fără gluten / Celiac',
-      lactoseFree: 'Fără lactoză',
       vegan: 'Vegan',
       vegetarian: 'Vegetarian',
       nutAllergy: 'Alergie la nuci',
-      seafoodAllergy: 'Alergie la fructe de mare',
       otherAllergies: 'Alte alergii sau restricții:',
       otherAllergiesPlaceholder: 'Ex: alergie la ouă, intoleranță la fructoză',
       message: 'Mesaj pentru miri (opțional)',
       submit: 'Trimite Confirmarea',
       thankYou: 'Mulțumim! Răspunsul tău a fost înregistrat.',
-    },
+      },
+      contactUs: 'Dacă aveți întrebări, vă rugăm să ne contactați.',
+
   },
 };
 
