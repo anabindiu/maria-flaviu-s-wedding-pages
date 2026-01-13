@@ -128,7 +128,7 @@ const translations: Record<Language, Translations> = {
       seconds: 'Secunde',
     },
     reception: {
-      title: 'RECEPȚIE',
+      title: 'RECEPTIE',
       description: 'VĂ INVITĂM SĂ NE FIȚI ALĂTURI LA O ZI DE SĂRBĂTOARE.',
       ceremony: 'CEREMONIA RELIGIOASĂ VA ÎNCEPE LA ORA',
       dinner: 'URMATĂ DE CINĂ LA ORA',
